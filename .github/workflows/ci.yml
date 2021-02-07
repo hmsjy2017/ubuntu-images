@@ -11,7 +11,8 @@ jobs:
           wget https://cdimage.ubuntu.com/releases/20.04.2/release/ubuntu-20.04.2-preinstalled-server-arm64+raspi.img.xz
           wget https://cdimage.ubuntu.com/releases/20.10/release/ubuntu-20.10-preinstalled-server-arm64+raspi.img.xz
           wget https://cdimage.ubuntu.com/releases/20.10/release/ubuntu-20.10-preinstalled-desktop-arm64+raspi.img.xz
-          
+          ls
+          pwd
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@latest
