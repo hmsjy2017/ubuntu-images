@@ -34,8 +34,8 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./ubuntu-20.04.2-preinstalled-server-arm64+raspi.img.xz
-          asset_name: octet-stream
-          asset_content_type: application/zip
+          asset_name: ubuntu-20.04.2-preinstalled-server-arm64+raspi.img.xz
+          asset_content_type: application/octet-stream
           
       - name: Upload GitHub Release File
         id: upload-release-asset-2
@@ -45,8 +45,8 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./ubuntu-20.10-preinstalled-server-arm64+raspi.img.xz
-          asset_name: octet-stream
-          asset_content_type: application/zip
+          asset_name: ubuntu-20.10-preinstalled-server-arm64+raspi.img.xz
+          asset_content_type: application/octet-stream
 
       - name: Upload GitHub Release File
         id: upload-release-asset-3
@@ -56,5 +56,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./ubuntu-20.10-preinstalled-desktop-arm64+raspi.img.xz
-          asset_name: octet-stream
-          asset_content_type: application/zip
+          asset_name: ubuntu-20.10-preinstalled-desktop-arm64+raspi.img.xz
+          asset_content_type: application/octet-stream
