@@ -1,0 +1,37 @@
+name: CI
+on:
+  push:
+    branches: master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+      - name: Download files
+        run: |
+          wget https://cdimage.ubuntu.com/releases/20.04.2/release/ubuntu-20.04.2-preinstalled-server-arm64+raspi.img.xz
+          wget https://cdimage.ubuntu.com/releases/20.10/release/ubuntu-20.10-preinstalled-server-arm64+raspi.img.xz
+          wget https://cdimage.ubuntu.com/releases/20.10/release/ubuntu-20.10-preinstalled-desktop-arm64+raspi.img.xz
+          
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Automated Release by GitHub Action CI
+          draft:  false
+          prerelease:  false
+
+      - name: Upload GitHub Release File
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./
+          asset_name: octet-stream
+          asset_content_type: application/zip
