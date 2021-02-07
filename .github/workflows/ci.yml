@@ -27,12 +27,34 @@ jobs:
           prerelease:  false
 
       - name: Upload GitHub Release File
-        id: upload-release-asset
+        id: upload-release-asset-1
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./
+          asset_path: ./ubuntu-20.04.2-preinstalled-server-arm64+raspi.img.xz
+          asset_name: octet-stream
+          asset_content_type: application/zip
+          
+      - name: Upload GitHub Release File
+        id: upload-release-asset-2
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ubuntu-20.10-preinstalled-server-arm64+raspi.img.xz
+          asset_name: octet-stream
+          asset_content_type: application/zip
+
+      - name: Upload GitHub Release File
+        id: upload-release-asset-3
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ubuntu-20.10-preinstalled-desktop-arm64+raspi.img.xz
           asset_name: octet-stream
           asset_content_type: application/zip
